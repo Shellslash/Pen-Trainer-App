@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+ 
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  width: 99vw;
+  background: white;
+}
+
+
+/*.screen.up {
+  margin-top: -100vh;
+}
+
+.time-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.time-list li {
+  margin: 10px;
+}*/
+
+
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 85%;
+  height: 80%;
+  background: grey;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/*
+.circle {
+  background: red;
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+}

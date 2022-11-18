@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylus Trainer</title>
+
+    <link rel="stylesheet" href="ClickingSession.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  
+  <body>
+
+    <div class="screen">
+      <button onclick="document.location='CustomModeClicking.html'">Custom (Clicking)</button>
+      <button onclick="document.location='ClickingSession.html'">Restart</button>
+      <button onclick="document.location='HomePage.html'">Home</button>
+      <div>Time: <span id="time">0</span></div>
+      <div>Score: <span id="score">0</span></div>
+      <div class="board" id="board"></div>
+    </div>
+
+    <script src="ClickingSession.js"></script>
+    
+  </body>
+</html>

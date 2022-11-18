@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CustomModeClicking.css" />
+    <title>Stylus Trainer</title>
+  </head>
+  
+  <body>
+    <div class="customSettings">
+
+      <h1 id="heading">Set up your custom session and press "Start" when you are ready.</h1>
+
+      <p>Session duration: <span id="valueSessionDuration"></span></p>
+      <input class="slider" id="sliderSessionDuration" type="range" min="5" max="300" value="60">
+
+      <p>Speed (static if set to zero): <span id="valueSpeed"></span></p>
+      <input class="slider" id="sliderSpeed" type="range" min="0" max="50" value="20">
+      
+      <p>Spawn frequency (if set to zero waits until last target is destroyed): <span id="valueSpawnFrequency"></span></p>
+      <input class="slider" id="sliderSpawnFrequency" type="range" min="0" max="50" value="10">
+
+      <p>Maximum allowed simultaneous targets: <span id="valueMaxTargets"></span></p>
+      <input class="slider" id="sliderMaxTargets" type="range" min="2" max="25" value="7">
+
+      <p>Target size: <span id="valueSize"></span></p>
+      <input class="slider" id="sliderSize" type="range" min="5" max="150" value="40">
+
+      
+      <button id="startButton">Start</button>
+
+    </div>
+
+    <script src="CustomModeClicking.js"></script>
+    
+  </body>
+</html>

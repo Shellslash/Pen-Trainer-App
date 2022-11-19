@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="CustomModeClicking.css" />
+    <link rel="stylesheet" href="CustomModeTracking.css" />
     <title>Stylus Trainer</title>
   </head>
   
@@ -14,6 +14,9 @@
 
       <p>Session duration: <span id="valueSessionDuration"></span></p>
       <input class="slider" id="sliderSessionDuration" type="range" min="5" max="300" value="60">
+
+      <p>Target Health: <span id="valueTargetHealth"></span></p>
+      <input class="slider" id="sliderTargetHealth" type="range" min="5" max="1000" value="5">
 
       <p>Speed (static if set to zero): <span id="valueSpeed"></span></p>
       <input class="slider" id="sliderSpeed" type="range" min="0" max="50" value="20">
@@ -32,7 +35,7 @@
 
     </div>
 
-    <script src="CustomModeClicking.js"></script>
+    <script src="CustomModeTracking.js"></script>
     
   </body>
 </html>

@@ -1,6 +1,9 @@
 let sliderSpeed = document.getElementById("sliderSpeed");
 let outputSpeed = document.getElementById("valueSpeed");
 
+let sliderTargetHealth = document.getElementById("sliderTargetHealth");
+let outputTargetHealth = document.getElementById("valueTargetHealth");
+
 let sliderMaxTargets = document.getElementById("sliderMaxTargets");
 let outputMaxTargets = document.getElementById("valueMaxTargets");
 
@@ -18,6 +21,7 @@ let startButton = document.getElementById("startButton")
 let sessionDuration = sliderSessionDuration.value;
 let spawnFrequency = sliderSpawnFrequency.value;
 let maxTargets = sliderMaxTargets.value;
+let maxTargetHealth = sliderTargetHealth.value;
 let speed = sliderSpeed.value;
 let size = sliderSize.value;
 
@@ -26,6 +30,7 @@ let customClickingTaskObject = {
     sessionDuration: sessionDuration,
     targetSpeed: speed,
     maxTargets: maxTargets,
+    targetHealth: maxTargetHealth,
     targetSize: size
 }
 
@@ -34,6 +39,7 @@ outputSpeed.innerHTML = sliderSpeed.value;
 outputSize.innerHTML = sliderSize.value;
 outputSessionDuration.innerHTML = sliderSessionDuration.value;
 outputMaxTargets.innerHTML = sliderMaxTargets.value;
+outputTargetHealth.innerHTML = sliderTargetHealth.value;
 
 sliderSpeed.oninput = function(){
     outputSpeed.innerHTML = this.value;
@@ -41,6 +47,10 @@ sliderSpeed.oninput = function(){
 
 sliderSpawnFrequency.oninput = function(){
     outputSpawnFrequency.innerHTML = this.value;
+}
+
+sliderTargetHealth.oninput = function(){
+    outputTargetHealth.innerHTML = this.value;
 }
 
 sliderMaxTargets.oninput = function(){
@@ -60,10 +70,11 @@ startButton.addEventListener( 'click', ( event ) => {
     customClickingTaskObject.sessionDuration = outputSessionDuration.innerHTML;
     customClickingTaskObject.spawnFrequency = outputSpawnFrequency.innerHTML;
     customClickingTaskObject.maxTargets = outputMaxTargets.innerHTML;
+    customClickingTaskObject.targetHealth = outputTargetHealth.innerHTML;
     customClickingTaskObject.targetSpeed = outputSpeed.innerHTML;
     customClickingTaskObject.targetSize = outputSize.innerHTML;
 
     window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
 
-    document.location='ClickingSession.html';
+    document.location='TrackingSession.html';
 });

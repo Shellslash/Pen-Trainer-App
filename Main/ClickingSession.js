@@ -5,8 +5,10 @@ const scoreCounter = document.querySelector( '#score' )
 
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
 let spawnFrequency = JSON.parse(window.localStorage.getItem('customTask')).spawnFrequency;
+let maxTargets = JSON.parse(window.localStorage.getItem('customTask')).maxTargets;
 let targetSize = JSON.parse(window.localStorage.getItem('customTask')).targetSize;
 let targetSpeed = JSON.parse(window.localStorage.getItem('customTask')).targetSpeed;
+let currentNumberOfTargets = 0;
 let score = 0
 
 
@@ -15,6 +17,7 @@ let score = 0
          score++
          scoreCounter.innerHTML = score;
          event.target.remove()
+         currentNumberOfTargets--;
          if(spawnFrequency==0){
             createRandomCircle()
          }
@@ -61,23 +64,26 @@ function finishGame() {
 }
 
 function createRandomCircle() {
-    const circle = document.createElement( 'div' )
-    const circleSize = getRandomNumber( targetSize, targetSize )
-    const { width, height } = board.getBoundingClientRect()
-
-    const x = getRandomNumber( 0, width - circleSize )
-    const y = getRandomNumber( 0, height - circleSize )
-
-    circle.classList.add( 'circle' )
-    circle.style.width = `${ circleSize }px`
-    circle.style.height = `${ circleSize }px`
-    circle.style.left = `${ x }px`
-    circle.style.top = `${ y }px`
-
-    board.append( circle )
-
-    if(targetSpeed > 0){
-        animateTarget()
+    if(currentNumberOfTargets < maxTargets){
+        currentNumberOfTargets++;
+        const circle = document.createElement( 'div' )
+        const circleSize = getRandomNumber( targetSize, targetSize )
+        const { width, height } = board.getBoundingClientRect()
+    
+        const x = getRandomNumber( 0, width - circleSize )
+        const y = getRandomNumber( 0, height - circleSize )
+    
+        circle.classList.add( 'circle' )
+        circle.style.width = `${ circleSize }px`
+        circle.style.height = `${ circleSize }px`
+        circle.style.left = `${ x }px`
+        circle.style.top = `${ y }px`
+    
+        board.append( circle )
+    
+        if(targetSpeed > 0){
+            animateTarget()
+        }
     }
 }
 

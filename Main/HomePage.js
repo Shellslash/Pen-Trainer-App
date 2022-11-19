@@ -14,6 +14,7 @@ clickingModeDynamicHard.addEventListener( 'click', ( event ) => {
     customClickingTaskObject.spawnFrequency = 25;
     customClickingTaskObject.targetSpeed = 30;
     customClickingTaskObject.targetSize = 25;
+    customClickingTaskObject.maxTargets = 10;
 
     window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
     document.location='ClickingSession.html';
@@ -24,6 +25,7 @@ clickingModeStaticHard.addEventListener( 'click', ( event ) => {
     customClickingTaskObject.spawnFrequency = 35;
     customClickingTaskObject.targetSpeed = 0;
     customClickingTaskObject.targetSize = 25;
+    customClickingTaskObject.maxTargets = 10;
 
     window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
     document.location='ClickingSession.html';

@@ -4,6 +4,7 @@ const scoreCounter = document.querySelector( '#score' )
 const consecHitsCounter = document.querySelector( '#consecutiveHits' )
 let boardWidth = board.getBoundingClientRect().width;
 let boardHeight = board.getBoundingClientRect().height;
+var audio = new Audio('Pickup_Coin6.wav');
 
 let circulationRadius = JSON.parse(window.localStorage.getItem('customTask')).circulationRadius;
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
@@ -53,13 +54,14 @@ board.addEventListener( 'mouseover', ( event ) => {
     consecutiveHits = 0;
     consecHitsCounter.innerHTML = consecutiveHits;
     if ( event.target.classList.contains( 'circle' )) {
-         trackInterval = setInterval(trackScore, 100);
+         trackInterval = setInterval(trackScore, 50);
     }
 })
 
 
 function trackScore(){
     score++;
+    audio.play();
     scoreCounter.innerHTML = score;
     consecutiveHits++;
     consecHitsCounter.innerHTML = consecutiveHits;

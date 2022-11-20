@@ -5,11 +5,32 @@
 .screen {
   display: flex;
   flex-direction: column;
+  align-self: center;
   align-items: center;
   justify-content: center;
-  height: 95vh;
+  height: 90vh;
   width: 99vw;
   background: white;
+}
+
+#buttons{
+  text-align: center
+}
+
+button {
+  background-color: #8d20d6;
+  align-items: center;
+  width: 25%;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .board {
@@ -35,7 +56,7 @@
 
 
 .circle {
-  background: red;
+  background: #8d20d6;
   position: absolute;
   border-radius: 50%;
   cursor: pointer;

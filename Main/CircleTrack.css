@@ -1,13 +1,38 @@
 * {
   box-sizing: border-box;
 }
+
+#buttons{
+  text-align: center
+}
+
+#counters{
+  text-align: center
+}
+
+button {
+  background-color: #8d20d6;
+  align-items: center;
+  width: 25%;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
  
 .screen {
   display: flex;
   flex-direction: column;
+  align-self: center;
   align-items: center;
   justify-content: center;
-  height: 95vh;
+  height: 90vh;
   width: 99vw;
   background: white;
 }
@@ -17,8 +42,8 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 95%;
-  height: 95%;
+  width: 90%;
+  height: 90%;
   background: grey;
   border-radius: 6px;
   overflow: hidden;
@@ -35,7 +60,7 @@
 
 
 .circle {
-  background: red;
+  background: #8d20d6;
   position: absolute;
   border-radius: 50%;
   cursor: pointer;

@@ -9,14 +9,28 @@
   
   <body>
 
-    <h1>Select a task or create your own custom one.</h1>
-
     <div class="main">
-      <button onclick="document.location='CustomModeClicking.html'" class="customButton">Clicking - Custom</button>
-      <button onclick="document.location='CustomModeTracking.html'" class="customButton">Tracking - Custom</button>
-      <button onclick="document.location='CustomModeCircleTrack.html'" class="customButton">CircleTrack - Custom</button>
-      <!-- <button id="clickingModeDynamicHard">Clicking - Dynamic - Hard</button>
-      <button id="clickingModeStaticHard">Clicking - Static - Hard</button> -->
+
+      <h1>Custom task creation.</h1>
+      <button onclick="document.location='CustomModeClicking.html'" class="customButton">Custom - Clicking</button>
+      <button onclick="document.location='CustomModeTracking.html'" class="customButton">Custom - Tracking</button>
+      <button onclick="document.location='CustomModeCircleTrack.html'" class="customButton">Custom - Circletrack</button>
+      <hr>
+      <h1>Static Clicking Tasks.</h1>
+      <button id="clickingModeStaticHard">Clicking - Static - Hard</button>
+      <hr>
+      <h1>Dynamic Clicking Tasks.</h1>
+      <button id="clickingModeDynamicHard">Clicking - Dynamic - Hard</button>
+      <hr>
+      <h1>Continuous Tracking Tasks.</h1>
+      <button id="trackingModeContinuousHard">Tracking - Continuous - Hard</button>
+      <hr>
+      <h1>Switch-Tracking Tasks.</h1>
+      <button id="trackingModeSwitchHard">Tracking - Switch - Hard</button>
+      <hr>
+      <h1>Circletrack Tasks.</h1>
+      <button id="trackingModeCircleHard">Tracking - Circle - Hard</button>
+
     </div>
 
     <script src="HomePage.js"></script>

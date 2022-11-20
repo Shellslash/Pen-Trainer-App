@@ -11,10 +11,13 @@
   
   <body>
 
-    <div class="screen">
-      <button onclick="document.location='CustomModeClicking.html'">Custom (Clicking)</button>
+    <div id='buttons'>    
+      <button onclick="document.location='CustomModeClicking.html'">Edit - Clicking</button>
       <button onclick="document.location='ClickingSession.html'">Restart</button>
       <button onclick="document.location='HomePage.html'">Home</button>
+    </div>
+
+    <div class="screen">
       <div>Time: <span id="time">0</span></div>
       <div>Score: <span id="score">0</span></div>
       <div class="board" id="board"></div>

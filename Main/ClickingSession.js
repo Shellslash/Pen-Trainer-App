@@ -2,6 +2,7 @@
 const timer = document.querySelector( '#time' )
 const board = document.querySelector( '#board' )
 const scoreCounter = document.querySelector( '#score' )
+var audio = new Audio('Pickup_Coin6.wav');
 
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
 let spawnFrequency = JSON.parse(window.localStorage.getItem('customTask')).spawnFrequency;
@@ -15,6 +16,7 @@ let score = 0
  board.addEventListener( 'mousedown', ( event ) => {
      if ( event.target.classList.contains( 'circle' )) {
          score++
+         audio.play();
          scoreCounter.innerHTML = score;
          event.target.remove()
          currentNumberOfTargets--;

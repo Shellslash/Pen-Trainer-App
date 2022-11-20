@@ -11,10 +11,14 @@
   
   <body>
 
-    <div class="screen">
-      <button onclick="document.location='CustomModeTracking.html'">Custom (Tracking)</button>
+    <div id="buttons">      
+      <button onclick="document.location='CustomModeTracking.html'">Edit - Tracking</button>
       <button onclick="document.location='TrackingSession.html'">Restart</button>
       <button onclick="document.location='HomePage.html'">Home</button>
+    </div>
+
+    <div class="screen">
+
       <div>Time: <span id="time">0</span></div>
       <div>Score: <span id="score">0</span></div>
       <div>Consecutive Hits: <span id="consecutiveHits">0</span></div>

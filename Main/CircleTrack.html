@@ -11,13 +11,20 @@
   
   <body>
 
-    <div class="screen">
-      <button onclick="document.location='CustomModeCircleTrack.html'">Custom (CircleTrack)</button>
-      <button onclick="document.location='TrackingSession.html'">Restart</button>
+    <div id="buttons">
+      <button onclick="document.location='CustomModeCircleTrack.html'">Edit - Circletrack</button>
+      <button onclick="document.location='CircleTrack.html'">Restart</button>
       <button onclick="document.location='HomePage.html'">Home</button>
-      <div>Time: <span id="time">0</span></div>
-      <div>Score: <span id="score">0</span></div>
-      <div>Consecutive Hits: <span id="consecutiveHits">0</span></div>
+    </div>
+
+    <div id="counters">
+      <span>Time: <span id="time">0</span></span>
+      <span>Score: <span id="score">0</span></span>
+      <span>Consecutive Hits: <span id="consecutiveHits">0</span></span>
+    </div>
+
+    <div class="screen">
+
       <div class="board" id="board"></div>
   
     </div>

@@ -2,6 +2,7 @@ const timer = document.querySelector( '#time' )
 const board = document.querySelector( '#board' )
 const scoreCounter = document.querySelector( '#score' )
 const consecHitsCounter = document.querySelector( '#consecutiveHits' )
+var audio = new Audio('Pickup_Coin6.wav');
 
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
 let spawnFrequency = JSON.parse(window.localStorage.getItem('customTask')).spawnFrequency;
@@ -28,6 +29,7 @@ board.addEventListener( 'mouseover', ( event ) => {
 
 function trackScore(){
     score++;
+    audio.play();
     scoreCounter.innerHTML = score;
     consecutiveHits++;
     consecHitsCounter.innerHTML = consecutiveHits;

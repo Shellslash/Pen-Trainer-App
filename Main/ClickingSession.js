@@ -2,7 +2,6 @@
 const timer = document.querySelector( '#time' )
 const board = document.querySelector( '#board' )
 const scoreCounter = document.querySelector( '#score' )
-var audio = new Audio('Pickup_Coin6.wav');
 
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
 let spawnFrequency = JSON.parse(window.localStorage.getItem('customTask')).spawnFrequency;
@@ -13,10 +12,17 @@ let currentNumberOfTargets = 0;
 let score = 0
 
 
+function playSound(){
+    let audio = new Audio('saya_kick_deeper.ogg');
+    audio.volume = 0.15;
+    audio.play();
+}
+
+
  board.addEventListener( 'mousedown', ( event ) => {
      if ( event.target.classList.contains( 'circle' )) {
          score++
-         audio.play();
+         playSound();
          scoreCounter.innerHTML = score;
          event.target.remove()
          currentNumberOfTargets--;
@@ -24,7 +30,11 @@ let score = 0
             createRandomCircle()
          }
     }
- })
+})
+
+board.addEventListener( 'mousedown', ( event ) => {
+    event.preventDefault();
+})
 
 function startGame() {
     gameInterval = setInterval( decreaseTime, 1000 )

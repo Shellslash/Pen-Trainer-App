@@ -2,7 +2,6 @@ const timer = document.querySelector( '#time' )
 const board = document.querySelector( '#board' )
 const scoreCounter = document.querySelector( '#score' )
 const consecHitsCounter = document.querySelector( '#consecutiveHits' )
-var audio = new Audio('Pickup_Coin6.wav');
 
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
 let spawnFrequency = JSON.parse(window.localStorage.getItem('customTask')).spawnFrequency;
@@ -15,21 +14,41 @@ let score = 0;
 let consecutiveHits = 0;
 let trackInterval;
 let lastTarget;
+let soundInterval;
+
+function playSound()
+{
+  let myAudio = new Audio('saya_kick_deeper.ogg'); 
+  
+  myAudio.volume = 0.15 ;
+  
+  soundInterval = setInterval(function()
+  {
+      myAudio.currentTime = 0;
+      myAudio.play();
+  }, 80);
+  
+}
 
 board.addEventListener( 'mouseover', ( event ) => {
     lastTarget = event;
     clearInterval(trackInterval);
+    clearInterval(soundInterval);
     consecutiveHits = 0;
     consecHitsCounter.innerHTML = consecutiveHits;
     if ( event.target.classList.contains( 'circle' )) {
          trackInterval = setInterval(trackScore, 100);
+         playSound();
     }
 })
 
+board.addEventListener( 'mousedown', ( event ) => {
+    event.preventDefault();
+})
+  
 
 function trackScore(){
     score++;
-    audio.play();
     scoreCounter.innerHTML = score;
     consecutiveHits++;
     consecHitsCounter.innerHTML = consecutiveHits;

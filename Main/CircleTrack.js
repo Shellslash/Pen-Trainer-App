@@ -4,7 +4,6 @@ const scoreCounter = document.querySelector( '#score' )
 const consecHitsCounter = document.querySelector( '#consecutiveHits' )
 let boardWidth = board.getBoundingClientRect().width;
 let boardHeight = board.getBoundingClientRect().height;
-var audio = new Audio('Pickup_Coin6.wav');
 
 let circulationRadius = JSON.parse(window.localStorage.getItem('customTask')).circulationRadius;
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
@@ -18,9 +17,24 @@ let score = 0;
 let consecutiveHits = 0;
 let trackInterval;
 let lastTarget;
+let soundInterval;
 
 let t = 0;
 let circlingSpeed = targetSpeed/1000;
+
+function playSound()
+{
+  let myAudio = new Audio('saya_kick_deeper.ogg'); 
+  
+  myAudio.volume = 0.15 ;
+  
+  soundInterval = setInterval(function()
+  {
+      myAudio.currentTime = 0;
+      myAudio.play();
+  }, 80);
+  
+}
 
 setInterval(updateBoardSize, 200);
 
@@ -51,17 +65,22 @@ function moveInCircle() {
 board.addEventListener( 'mouseover', ( event ) => {
     lastTarget = event;
     clearInterval(trackInterval);
+    clearInterval(soundInterval);
     consecutiveHits = 0;
     consecHitsCounter.innerHTML = consecutiveHits;
     if ( event.target.classList.contains( 'circle' )) {
          trackInterval = setInterval(trackScore, 50);
+         playSound();
     }
+})
+
+board.addEventListener( 'mousedown', ( event ) => {
+    event.preventDefault();
 })
 
 
 function trackScore(){
     score++;
-    audio.play();
     scoreCounter.innerHTML = score;
     consecutiveHits++;
     consecHitsCounter.innerHTML = consecutiveHits;

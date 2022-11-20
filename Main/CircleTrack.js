@@ -2,18 +2,50 @@ const timer = document.querySelector( '#time' )
 const board = document.querySelector( '#board' )
 const scoreCounter = document.querySelector( '#score' )
 const consecHitsCounter = document.querySelector( '#consecutiveHits' )
+let boardWidth = board.getBoundingClientRect().width;
+let boardHeight = board.getBoundingClientRect().height;
 
+let circulationRadius = JSON.parse(window.localStorage.getItem('customTask')).circulationRadius;
 let time = JSON.parse(window.localStorage.getItem('customTask')).sessionDuration;
-let spawnFrequency = JSON.parse(window.localStorage.getItem('customTask')).spawnFrequency;
-let maxTargets = JSON.parse(window.localStorage.getItem('customTask')).maxTargets;
+let spawnFrequency = 0;
+let maxTargets = 1;
 let targetSize = JSON.parse(window.localStorage.getItem('customTask')).targetSize;
 let targetSpeed = JSON.parse(window.localStorage.getItem('customTask')).targetSpeed;
-let targetHealth = JSON.parse(window.localStorage.getItem('customTask')).targetHealth;
+let targetHealth = 1000000;
 let currentNumberOfTargets = 0;
 let score = 0;
 let consecutiveHits = 0;
 let trackInterval;
 let lastTarget;
+
+let t = 0;
+let circlingSpeed = targetSpeed/1000;
+
+setInterval(updateBoardSize, 200);
+
+function updateBoardSize(){
+    boardWidth = board.getBoundingClientRect().width;
+    boardHeight = board.getBoundingClientRect().height;
+}
+
+function moveInCircle() {
+    t += circlingSpeed;
+
+    let r = circulationRadius;
+
+    let xcenter = boardWidth/2 - targetSize/2;
+    let ycenter = boardHeight/2 - targetSize/2;
+
+    let newLeft = Math.floor(xcenter - (r * Math.cos(t)));
+    let newTop = Math.floor(ycenter + (r * Math.sin(t)));
+
+    $('.circle').animate({
+        top: newTop,
+        left: newLeft,
+    }, 1, function() {
+        moveInCircle();
+    });
+}
 
 board.addEventListener( 'mouseover', ( event ) => {
     lastTarget = event;
@@ -86,11 +118,11 @@ function createRandomCircle() {
         currentNumberOfTargets++;
         const circle = document.createElement( 'div' )
         const circleSize = getRandomNumber( targetSize, targetSize )
-        const { width, height } = board.getBoundingClientRect()
-    
-        const x = getRandomNumber( 0, width - circleSize )
-        const y = getRandomNumber( 0, height - circleSize )
-    
+        const { left, top, width, height } = board.getBoundingClientRect()
+
+        const x = left + width / 2;
+        const y = top + height / 2;
+
         circle.classList.add( 'circle' )
         circle.style.width = `${ circleSize }px`
         circle.style.height = `${ circleSize }px`
@@ -99,9 +131,7 @@ function createRandomCircle() {
     
         board.append( circle )
     
-        if(targetSpeed > 0){
-            animateTarget();
-        }
+        moveInCircle();
     }
 }
 
@@ -149,4 +179,5 @@ function calcSpeed(prev, next) {
     var speed = Math.ceil(greatest/speedModifier);
 
     return speed;
+
 }

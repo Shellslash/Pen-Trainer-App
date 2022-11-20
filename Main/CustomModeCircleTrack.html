@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CustomModeCircleTrack.css" />
+    <title>Stylus Trainer</title>
+  </head>
+  
+  <body>
+    <div class="customSettings">
+
+      <h1 id="heading">Set up your custom session and press "Start" when you are ready.</h1>
+
+      <p>Session duration: <span id="valueSessionDuration"></span></p>
+      <input class="slider" id="sliderSessionDuration" type="range" min="5" max="300" value="60">
+
+      <p>Circling Speed: <span id="valueSpeed"></span></p>
+      <input class="slider" id="sliderSpeed" type="range" min="10" max="200" value="50">
+
+      <p>Target size: <span id="valueSize"></span></p>
+      <input class="slider" id="sliderSize" type="range" min="5" max="150" value="40">
+
+      <p>Circulation radius: <span id="valueCirculationRadius"></span></p>
+      <input class="slider" id="sliderCirculationRadius" type="range" min="50" max="300" value="100">
+
+      
+      <button id="startButton">Start</button>
+
+    </div>
+
+    <script src="CustomModeCircleTrack.js"></script>
+    
+  </body>
+</html>

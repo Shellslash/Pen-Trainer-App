@@ -1,8 +1,15 @@
-.main{
-    text-align: center
-  }
-  
-  button {
+.main {
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+}
+
+button {
     background-color: #8d20d6;
     align-items: center;
     width: 25%;
@@ -16,4 +23,10 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
-  }
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #6c1475;
+    }

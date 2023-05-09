@@ -29,170 +29,53 @@ let customClickingTaskObject = {
 
 }
 
-clickingModeDynamicEasy.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 25;
-    customClickingTaskObject.targetSpeed = 20;
-    customClickingTaskObject.targetSize = 55;
-    customClickingTaskObject.maxTargets = 7;
+function updateCustomTaskAndRedirect(sessionDuration, spawnFrequency, targetSpeed, targetSize, maxTargets, targetHealth, circulationRadius, location) {
+    customClickingTaskObject.sessionDuration = sessionDuration;
+    customClickingTaskObject.spawnFrequency = spawnFrequency;
+    customClickingTaskObject.targetSpeed = targetSpeed;
+    customClickingTaskObject.targetSize = targetSize;
+    customClickingTaskObject.maxTargets = maxTargets;
+    customClickingTaskObject.targetHealth = targetHealth;
+    customClickingTaskObject.circulationRadius = circulationRadius;
 
     window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='ClickingSession.html';
-});
+    document.location = location;
+}
 
-clickingModeDynamicMedium.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 25;
-    customClickingTaskObject.targetSpeed = 30;
-    customClickingTaskObject.targetSize = 35;
-    customClickingTaskObject.maxTargets = 6;
+// Configuration for each mode
+const modes = [
+    // Clicking Mode Dynamic
+    { mode: "clickingModeDynamicEasy", sessionDuration: 60, spawnFrequency: 25, targetSpeed: 20, targetSize: 55, maxTargets: 7, location: "ClickingSession.html" },
+    { mode: "clickingModeDynamicMedium", sessionDuration: 60, spawnFrequency: 25, targetSpeed: 30, targetSize: 35, maxTargets: 6, location: "ClickingSession.html" },
+    { mode: "clickingModeDynamicHard", sessionDuration: 60, spawnFrequency: 25, targetSpeed: 30, targetSize: 25, maxTargets: 5, location: "ClickingSession.html" },
 
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='ClickingSession.html';
-});
+    // Clicking Mode Static
+    { mode: "clickingModeStaticEasy", sessionDuration: 60, spawnFrequency: 20, targetSpeed: 0, targetSize: 55, maxTargets: 10, location: "ClickingSession.html" },
+    { mode: "clickingModeStaticMedium", sessionDuration: 60, spawnFrequency: 20, targetSpeed: 0, targetSize: 25, maxTargets: 8, location: "ClickingSession.html" },
+    { mode: "clickingModeStaticHard", sessionDuration: 60, spawnFrequency: 30, targetSpeed: 0, targetSize: 15, maxTargets: 5, location: "ClickingSession.html" },
 
-clickingModeDynamicHard.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 25;
-    customClickingTaskObject.targetSpeed = 30;
-    customClickingTaskObject.targetSize = 25;
-    customClickingTaskObject.maxTargets = 5;
+    // Tracking Mode Continuous
+    { mode: "trackingModeContinuousEasy", sessionDuration: 60, spawnFrequency: 0, targetSpeed: 25, targetSize: 65, maxTargets: 1, targetHealth: 1000, location: "TrackingSession.html" },
+    { mode: "trackingModeContinuousMedium", sessionDuration: 60, spawnFrequency: 0, targetSpeed: 35, targetSize: 50, maxTargets: 1, targetHealth: 1000, location: "TrackingSession.html" },
+    { mode: "trackingModeContinuousHard", sessionDuration: 60, spawnFrequency: 0, targetSpeed: 40, targetSize: 40, maxTargets: 1, targetHealth: 1000, location: "TrackingSession.html" },
 
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='ClickingSession.html';
-});
+    // Tracking Mode Switch
+    { mode: "trackingModeSwitchEasy", sessionDuration: 60, spawnFrequency: 10, targetSpeed: 15, targetSize: 55, maxTargets: 7, targetHealth: 7, location: "TrackingSession.html" },
+    { mode: "trackingModeSwitchMedium", sessionDuration: 60, spawnFrequency: 10, targetSpeed: 20, targetSize: 45, maxTargets: 6, targetHealth: 8, location: "TrackingSession.html" },
+    { mode: "trackingModeSwitchHard", sessionDuration: 60, spawnFrequency: 10, targetSpeed: 20, targetSize: 35, maxTargets: 5, targetHealth: 9, location: "TrackingSession.html" },
 
-clickingModeStaticHard.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 30;
-    customClickingTaskObject.targetSpeed = 0;
-    customClickingTaskObject.targetSize = 15;
-    customClickingTaskObject.maxTargets = 5;
+    // Tracking Mode Circle
+    { mode: "trackingModeCircleEasy", sessionDuration: 60, targetSpeed: 50, targetSize: 90, circulationRadius: 250, location: "CircleTrack.html" },
+    { mode: "trackingModeCircleMedium", sessionDuration: 60, targetSpeed: 65, targetSize: 60, circulationRadius: 180, location: "CircleTrack.html" },
+    { mode: "trackingModeCircleHard", sessionDuration: 60, targetSpeed: 75, targetSize: 40, circulationRadius: 150, location: "CircleTrack.html" }
+];
 
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='ClickingSession.html';
-});
-
-clickingModeStaticEasy.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 20;
-    customClickingTaskObject.targetSpeed = 0;
-    customClickingTaskObject.targetSize = 55;
-    customClickingTaskObject.maxTargets = 10;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='ClickingSession.html';
-});
-
-clickingModeStaticMedium.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 20;
-    customClickingTaskObject.targetSpeed = 0;
-    customClickingTaskObject.targetSize = 25;
-    customClickingTaskObject.maxTargets = 8;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='ClickingSession.html';
-});
-
-trackingModeContinuousEasy.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 0;
-    customClickingTaskObject.targetSpeed = 25;
-    customClickingTaskObject.targetSize = 65;
-    customClickingTaskObject.maxTargets = 1;
-    customClickingTaskObject.targetHealth = 1000;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='TrackingSession.html';
-});
-
-trackingModeContinuousMedium.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 0;
-    customClickingTaskObject.targetSpeed = 35;
-    customClickingTaskObject.targetSize = 50;
-    customClickingTaskObject.maxTargets = 1;
-    customClickingTaskObject.targetHealth = 1000;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='TrackingSession.html';
-});
-
-trackingModeContinuousHard.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 0;
-    customClickingTaskObject.targetSpeed = 40;
-    customClickingTaskObject.targetSize = 40;
-    customClickingTaskObject.maxTargets = 1;
-    customClickingTaskObject.targetHealth = 1000;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='TrackingSession.html';
-});
-
-trackingModeSwitchEasy.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 10;
-    customClickingTaskObject.targetSpeed = 15;
-    customClickingTaskObject.targetSize = 55;
-    customClickingTaskObject.maxTargets = 7;
-    customClickingTaskObject.targetHealth = 7;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='TrackingSession.html';
-});
-
-trackingModeSwitchMedium.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 10;
-    customClickingTaskObject.targetSpeed = 20;
-    customClickingTaskObject.targetSize = 45;
-    customClickingTaskObject.maxTargets = 6;
-    customClickingTaskObject.targetHealth = 8;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='TrackingSession.html';
-});
-
-trackingModeSwitchHard.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.spawnFrequency = 10;
-    customClickingTaskObject.targetSpeed = 20;
-    customClickingTaskObject.targetSize = 35;
-    customClickingTaskObject.maxTargets = 5;
-    customClickingTaskObject.targetHealth = 9;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='TrackingSession.html';
-});
-
-trackingModeCircleEasy.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.targetSpeed = 50;
-    customClickingTaskObject.targetSize = 90;
-    customClickingTaskObject.circulationRadius = 250;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='CircleTrack.html';
-});
-
-trackingModeCircleMedium.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.targetSpeed = 65;
-    customClickingTaskObject.targetSize = 60;
-    customClickingTaskObject.circulationRadius = 180;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='CircleTrack.html';
-});
-
-trackingModeCircleHard.addEventListener( 'click', ( event ) => {
-    customClickingTaskObject.sessionDuration = 60;
-    customClickingTaskObject.targetSpeed = 75;
-    customClickingTaskObject.targetSize = 40;
-    customClickingTaskObject.circulationRadius = 150;
-
-    window.localStorage.setItem("customTask", JSON.stringify(customClickingTaskObject));
-    document.location='CircleTrack.html';
+// Attach event listeners for each mode
+modes.forEach(({ mode, sessionDuration, spawnFrequency, targetSpeed, targetSize, maxTargets, targetHealth, circulationRadius, location }) => {
+    const element = document.getElementById(mode);
+    if (element) {
+        element.addEventListener('click', (event) => {
+            updateCustomTaskAndRedirect(sessionDuration, spawnFrequency, targetSpeed, targetSize, maxTargets, targetHealth, circulationRadius, location);
+        });
+    }
 });
